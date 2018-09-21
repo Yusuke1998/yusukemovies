@@ -92,6 +92,13 @@
 			    no_results_text: "Oops, no hay coincidencias!",
 			    width: "100%",
 			  });
+
+        	 $(".select_multiple2").chosen({
+        	 	multiple:true,
+        	 	placeholder_text_multiple:"Selecciona actores!",
+			    no_results_text: "Oops, no hay coincidencias!",
+			    width: "100%",
+			  });
         </script>
         <!-- CHOSEN -->
         <!-- DATA TABLES -->

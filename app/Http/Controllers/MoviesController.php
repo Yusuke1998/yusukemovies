@@ -59,7 +59,33 @@ class MoviesController extends Controller
      */
     public function store(moviesRequests $request)
     {
-        
+        // Guardando imagen del poster
+        if ($request->hasFile('poster')) {
+            $file = $request->file('poster');
+            $namePoster = time()."_poster_".$file->getClientOriginalName();
+            $file->move(public_path()."/poster/",$namePoster);
+        }
+
+        $movie = new Movie;
+        $movie->title = $request->title;
+        $movie->sinopsis = $request->sinopsis;
+        $movie->content = $request->content;
+        $movie->user_id = $request->user_id;
+        $movie->year_id = $request->year_id;
+        $movie->category_id = $request->category_id;
+        $movie->director_id = $request->director_id;
+        $movie->save();
+
+        $movie->tags()->sync($request->tags);
+        $movie->actors()->sync($request->actors);
+
+        $poster = new Poster;
+        $poster->name = $namePoster;
+        $poster->url = $request->poster_url;
+        $poster->movie()->associate($movie);
+        $poster->save();
+
+        return back()->with('info','Se ha guardado '.$movie->title.' manera exitosa!');   
     }
 
     /**
@@ -83,7 +109,21 @@ class MoviesController extends Controller
     public function edit($id)
     {
         $pelicula = Movie::find($id);
-        return view('admin.peliculas.edit',compact('pelicula'));
+        $categorias = Category::all();
+        $usuarios = User::all();
+        $tags = Tag::all();
+        $años = Year::all();
+        $actores = Actor::all();
+        $directores = Director::all();
+
+        return view('admin.peliculas.edit')
+        ->with('pelicula',$pelicula)
+        ->with('categorias',$categorias)
+        ->with('usuarios',$usuarios)
+        ->with('tags',$tags)
+        ->with('años',$años)
+        ->with('actores',$actores)
+        ->with('directores',$directores);
     }
 
     /**
@@ -95,7 +135,32 @@ class MoviesController extends Controller
      */
     public function update(moviesRequests $request, $id)
     {
+         // Guardando imagen del poster
+        if ($request->hasFile('poster')) {
+            $file = $request->file('poster');
+            $namePoster = time()."_poster_".$file->getClientOriginalName();
+            $file->move(public_path()."/poster/",$namePoster);
+        }
+
         $pelicula = Movie::find($id);
+        $pelicula->title = $request->title;
+        $pelicula->sinopsis = $request->sinopsis;
+        $pelicula->content = $request->content;
+        $pelicula->category_id = $request->category_id;
+        $pelicula->year_id = $request->year_id;
+        $pelicula->user_id = $request->user_id;
+        $pelicula->director_id = $request->director_id;
+        $pelicula->save();
+
+        $poster = new Poster;
+        $poster->name = $namePoster;
+        $poster->url = $request->poster_url;
+        $poster->movie()->associate($pelicula);
+        $poster->save();
+
+        $pelicula->tags()->sync($request->tags);
+        $pelicula->actors()->sync($request->actors);
+
 
         return back()->with('info','La pelicula '.$pelicula->title.' '.'fue editada con exito!');
     }

@@ -24,15 +24,15 @@ class moviesRequests extends FormRequest
     public function rules()
     {
         return [
-            'title'               =>      'required|min:10|max:100',
-            'sinopsis'            =>      'required|min:10|max:300',
-            'content'             =>      'required|min:20|max:500',
+            'title'               =>      'required|min:5|max:100',
+            'sinopsis'            =>      'required|min:10|max:3300',
+            'content'             =>      'required|min:20|max:5500',
             'user_id'             =>      'required',
             'year_id'             =>      'required',
             'director_id'         =>      'required',
             'category_id'         =>      'required',
-            'actor_id'            =>      'required',
-            'poster_id'           =>      'required',
+            'actors'            =>      'required',
+            'poster'           =>      'required|image',
         ];
     }
 
@@ -51,8 +51,10 @@ class moviesRequests extends FormRequest
             'year_id.required'          =>      'El año es requerido',
             'director_id.required'      =>      'El director es requerido',
             'category_id.required'      =>      'La categoria es requerida',
-            'actor_id.required'         =>      'El actor es requerido',
-            'poster_id.required'         =>      'El poster es requerido',
+            'actors.required'         =>      'El actor es requerido',
+            'poster.required'         =>      'El poster es requerido',
+            'poster.image'         =>      'El poster debe ser una imagen',
+
         ];
     }
 }
