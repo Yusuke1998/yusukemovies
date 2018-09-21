@@ -1,0 +1,62 @@
+
+
+.nav-style-a{
+	color:white;
+}
+
+.nav-style-li{
+	/*background:#787870;*/
+}
+
+.poster{
+	color: black;
+	background: darkblue;
+}
+
+body{
+	color: white;
+	background-image: url(../img/alone.jpg);
+	background: #954575;
+}
+
+.search{
+	margin-bottom: 10px;
+}
+
+i{
+  font-size:16px;
+}
+.slider{
+	background-image: url('../img/tecn.jpg');
+}
+
+.list-all{
+	background-image: url('../img/alone.jpg');
+}
+
+.text-black{
+	color:black;
+	text-align: center;
+}
+
+.text-white{
+	color:white;
+	text-align: center;
+}
+
+.navbar-static-top {
+  margin-bottom:20px;
+  background:darkgray;
+}
+
+.nav > li > a {
+
+}
+
+footer {
+  margin-top:40px;
+  padding-top:20px;
+  padding-bottom:20px;
+  background-color:#efefef;
+  color: black;
+}
