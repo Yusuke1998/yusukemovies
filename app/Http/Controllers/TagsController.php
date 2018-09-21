@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Tag;
 
 class TagsController extends Controller
 {
@@ -13,7 +14,8 @@ class TagsController extends Controller
      */
     public function index()
     {
-        //
+        $tags = Tag::all();
+        return view('admin.tags.list',compact('tags'));
     }
 
     /**
@@ -23,7 +25,8 @@ class TagsController extends Controller
      */
     public function create()
     {
-        //
+
+        return view('admin.tags.create');
     }
 
     /**
@@ -34,7 +37,10 @@ class TagsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $tag = new Tag;
+        $tag->fill($request->all());
+        $tag->save();
+        return back()->with('info','Tag '.$request->name.' creado con exito!');
     }
 
     /**
@@ -56,7 +62,8 @@ class TagsController extends Controller
      */
     public function edit($id)
     {
-        //
+        $tag = Tag::find($id);
+        return view('admin.tags.edit',compact('tag'));
     }
 
     /**
@@ -68,7 +75,10 @@ class TagsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $tag = Tag::find($id);
+        $tag->fill($request->all());
+        $tag->save();
+        return back()->with('info','Tag '.$request->name.' actualizado con exito!');
     }
 
     /**
@@ -79,6 +89,8 @@ class TagsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $tag = Tag::find($id);
+        $tag->delete();
+        return back()->with('info','Tag '.$tag->name.' eliminado con exito!');
     }
 }

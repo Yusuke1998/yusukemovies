@@ -57,13 +57,9 @@
 							<li><a href="{{route('actor.index')}}"><i class="glyphicon glyphicon-star"></i> Actores</a></li>
 							<li><a href="{{route('director.index')}}"><i class="glyphicon glyphicon-facetime-video"></i> Directores</a></li>
 							<li><a href="{{route('pelicula.index')}}"><i class="glyphicon glyphicon-film"></i> Peliculas</a></li>
-							<li><a href="#"><i class="glyphicon glyphicon-list"></i> Categorias</a></li>
-							<li><a href="#"><i class="glyphicon glyphicon-tag"></i> Tags</a></li>
-							<li><a href="#"><i class="glyphicon glyphicon-folder-open"></i> Poster</a></li>
-							<li><a href="#"><i class="glyphicon glyphicon-time"></i> Año</a></li>
-							<li><a href="#"><i class="glyphicon glyphicon-thumbs-up"></i> Calificaciones</a></li>
-							<li><a href="#"><i class="glyphicon glyphicon-comment"></i> Comentarios</a></li>
-
+							<li><a href="{{route('categoria.index')}}"><i class="glyphicon glyphicon-list"></i> Categorias</a></li>
+							<li><a href="{{route('tag.index')}}"><i class="glyphicon glyphicon-tag"></i> Tags</a></li>
+							<li><a href="{{route('poster.index')}}"><i class="glyphicon glyphicon-folder-open"></i> Poster</a></li>
 						</ul>
 					</li>
 				  </ul>

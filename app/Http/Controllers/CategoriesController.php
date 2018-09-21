@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Category;
 
 class CategoriesController extends Controller
 {
@@ -13,7 +14,8 @@ class CategoriesController extends Controller
      */
     public function index()
     {
-        //
+        $categorias = Category::all();
+        return view('admin.categorias.list',compact('categorias'));
     }
 
     /**
@@ -23,7 +25,7 @@ class CategoriesController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.categorias.create');
     }
 
     /**
@@ -34,7 +36,11 @@ class CategoriesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $categoria = new Category;
+        $categoria->name = $request->name;
+        $categoria->content = $request->content;
+        $categoria->save();
+        return back()->with('info','Categoria '.$request->name.' creada con exito!');
     }
 
     /**
@@ -56,7 +62,8 @@ class CategoriesController extends Controller
      */
     public function edit($id)
     {
-        //
+        $categoria = Category::find($id);
+        return view('admin.categorias.edit',compact('categoria'));
     }
 
     /**
@@ -68,7 +75,10 @@ class CategoriesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $categoria = Category::find($id);
+        $categoria->fill($request->all());
+        $categoria->save();
+        return back()->with('info','Categoria '.$request->name.' actualizada con exito!');
     }
 
     /**
@@ -79,6 +89,8 @@ class CategoriesController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $categoria = Category::find($id);
+        $categoria->delete();
+        return back()->with('info','Categoria '.$categoria->name.' eliminada con exito!');
     }
 }

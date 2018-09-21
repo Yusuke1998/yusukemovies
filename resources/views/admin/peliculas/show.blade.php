@@ -6,6 +6,7 @@
 	<div class="panel" style="background: #535888; color: white; padding: 10px;">
 		<div class="panel-title">
 			<p class="h5 pull-left">{{$pelicula->title}}</p>
+			<p class="h5 pull-right">Publicado por: {{$pelicula->user->name}}</p>
 		</div>
 		<div class="panel-body">
 			<p class="h4">{{$pelicula->sinopsis}}</p>
@@ -31,7 +32,6 @@
 			@foreach($pelicula->posters as $poster)
 				<img src="/poster/{{$poster->name}}" class="img-thumbnail" alt="poster">
 			@endforeach
-			<p class="h5 pull-right">Publicado por: {{$pelicula->user->name}}</p>
 		</div>
 		<div class="panel-footer">
 			<p class="h5"><a href="{{route('pelicula.index')}}" title="Lista de peliculas">Volver a la lista.</a></p>
