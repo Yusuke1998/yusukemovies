@@ -5,13 +5,13 @@
 <div class="col-md-12">
 		<div class="panel" style="background: #535888; color: white; padding: 10px;">
 			<div class="panel-title">
-				<p class="h5">{{$actor->firstname." ".$actor->lastname}}</p>
+				<p class="h5">{{$director->firstname." ".$director->lastname}}</p>
 			</div>
 			<div class="panel-body">
-				<p class="h3">{{$actor->biography}}</p>
+				<p class="h3">{{$director->biography}}</p>
 			</div>
 			<div class="panel-footer">
-				<p class="h5"><a href="{{route('actor.index')}}" title="Lista de actores">Volver a la lista.</a></p>
+				<p class="h5"><a href="{{route('director.index')}}" title="Lista de directores">Volver a la lista.</a></p>
 			</div>
 		</div>
 </div>

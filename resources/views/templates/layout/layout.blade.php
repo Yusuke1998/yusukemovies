@@ -10,6 +10,10 @@
         <!-- CHOSEN -->
         <link href="{{asset('/plugins/chosen/chosen.css')}}" rel="stylesheet">
         <!-- CHOSEN -->
+        <!-- DATA-TABLES -->
+        <link href="{{asset('/plugins/datatables/dataTables.bootstrap.css')}}" rel="stylesheet">
+        <!-- DATA-TABLES -->
+        
     </head>
     <body>  
         <!-- Header -->
@@ -19,7 +23,7 @@
 			  <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
 				  <span class="icon-toggle"></span>
 			  </button>
-			  <a class="navbar-brand" href="#">YMovies</a>
+			  <a class="navbar-brand" href="{{route('admin.index')}}">YMovies</a>
 			</div>
 			<div class="navbar-collapse collapse">
 			  <ul class="nav navbar-nav navbar-right">
@@ -49,10 +53,10 @@
 					  <h5>Editar <i class="glyphicon glyphicon-chevron-down"></i></h5>
 					  </a>
 						<ul style="height: auto;" class="list-unstyled in" id="userMenu">
-							<li class="active"> <a href="#"><i class="glyphicon glyphicon-user"></i> Usuarios</a></li>
+							<li class="active"> <a href="{{route('usuario.index')}}"><i class="glyphicon glyphicon-user"></i> Usuarios</a></li>
 							<li><a href="{{route('actor.index')}}"><i class="glyphicon glyphicon-star"></i> Actores</a></li>
-							<li><a href="#"><i class="glyphicon glyphicon-facetime-video"></i> Directores</a></li>
-							<li><a href="#"><i class="glyphicon glyphicon-film"></i> Peliculas</a></li>
+							<li><a href="{{route('director.index')}}"><i class="glyphicon glyphicon-facetime-video"></i> Directores</a></li>
+							<li><a href="{{route('pelicula.index')}}"><i class="glyphicon glyphicon-film"></i> Peliculas</a></li>
 							<li><a href="#"><i class="glyphicon glyphicon-list"></i> Categorias</a></li>
 							<li><a href="#"><i class="glyphicon glyphicon-tag"></i> Tags</a></li>
 							<li><a href="#"><i class="glyphicon glyphicon-folder-open"></i> Poster</a></li>
@@ -74,6 +78,7 @@
         <script type="text/javascript" src="{{asset('/js/bootstrap.js')}}"></script>
         <!-- CHOSEN -->
         <script type="text/javascript" src="{{asset('/plugins/chosen/chosen.jquery.js')}}"></script>
+
         <script type="text/javascript">
         	 $(".select").chosen({
 			    no_results_text: "Oops, no hay coincidencias!",
@@ -88,6 +93,38 @@
 			    width: "100%",
 			  });
         </script>
-        <!-- CHOSEN -->  
+        <!-- CHOSEN -->
+        <!-- DATA TABLES -->
+        <script type="text/javascript" src="{{asset('/plugins/datatables/jquery.dataTables.js')}}"></script>  
+
+        <script type="text/javascript" src="{{asset('/plugins/datatables/dataTables.bootstrap.js')}}"></script>  
+
+        <script>
+		  $(function () {
+		    $("#tabla").DataTable(
+		    	{
+			      "language":{
+			       "lengthMenu":"Mostrar _MENU_ registros por página.",
+			       "zeroRecords": "Lo sentimos. No se encontraron registros.",
+			             "sInfo": "Mostrando: _START_ de _END_ - Total registros: _TOTAL_ ",
+			             "infoEmpty": "No hay registros aún.",
+			             "infoFiltered": "(filtrados de un total de _MAX_ registros)",
+			             "search" : "Búsqueda",
+			             "LoadingRecords": "Cargando ...",
+			             "Processing": "Procesando...",
+			             "SearchPlaceholder": "Escribe...",
+			             "paginate": {
+			     "previous": "Anterior",
+			     "next": "Siguiente", 
+			        }
+			    }
+			}
+
+    	);
+	    
+	  });
+		</script>
+        <!-- DATA TABLES -->
+
 	</body>
 </html>

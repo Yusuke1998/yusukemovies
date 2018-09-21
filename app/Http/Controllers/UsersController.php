@@ -1,7 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Http\Requests\usersRequests;
+use App\User;
 use Illuminate\Http\Request;
 
 class UsersController extends Controller
@@ -13,7 +14,8 @@ class UsersController extends Controller
      */
     public function index()
     {
-        //
+        $usuarios = User::orderBy('id','DESC')->paginate(5);
+        return view('admin.usuarios.list',compact('usuarios'));
     }
 
     /**
@@ -23,7 +25,7 @@ class UsersController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.usuarios.create');
     }
 
     /**
@@ -32,9 +34,14 @@ class UsersController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(usersRequests $request)
     {
-        //
+        $usuario = new User;
+        $usuario->name = $request->name;
+        $usuario->email = $request->email;
+        $usuario->password = bcrypt($request->password);
+        $usuario->save();
+        return back()->with('info','Usuario '.$request->name.' creado con exito');
     }
 
     /**
@@ -45,7 +52,8 @@ class UsersController extends Controller
      */
     public function show($id)
     {
-        //
+        $usuario = User::find($id);
+        return view('admin.usuarios.show',compact('usuario'));
     }
 
     /**
@@ -55,8 +63,8 @@ class UsersController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
-    {
-        //
+    {   $usuario = User::find($id);
+        return view('admin.usuarios.edit',compact('usuario'));
     }
 
     /**
@@ -66,9 +74,15 @@ class UsersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(usersRequests $request, $id)
     {
-        //
+        $usuario = User::find($id);
+        $usuario->name = $request->name;
+        $usuario->email = $request->email;
+        $usuario->password = bcrypt($request->password);
+        $usuario->save();
+        return back()->with('info','Usuario '.$usuario->name.' editado exitosamente!');
+        
     }
 
     /**
@@ -79,6 +93,8 @@ class UsersController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $usuario = User::find($id);
+        $usuario->delete();
+        return back()->with('info','Usuario '.$usuario->name.' eliminado exitosamente!');
     }
 }

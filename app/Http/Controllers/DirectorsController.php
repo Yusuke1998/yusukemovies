@@ -1,8 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Http\Requests\directorsRequests;
 use Illuminate\Http\Request;
+use App\Director;
 
 class DirectorsController extends Controller
 {
@@ -13,7 +14,8 @@ class DirectorsController extends Controller
      */
     public function index()
     {
-        //
+        $directores = Director::orderBy('firstname','ASC')->paginate();
+        return view('admin.directores.list',compact('directores'));
     }
 
     /**
@@ -23,7 +25,7 @@ class DirectorsController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.directores.create');
     }
 
     /**
@@ -32,9 +34,14 @@ class DirectorsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(directorsRequests $request)
     {
-        //
+        $director = new Director;
+        $director->firstname = $request->firstname;
+        $director->lastname = $request->lastname;
+        $director->biography = $request->biography;
+        $director->save();
+        return back()->with('info','Director '.$request->firstname.' '.$request->lastname.' guardado exitosamente!');
     }
 
     /**
@@ -45,7 +52,8 @@ class DirectorsController extends Controller
      */
     public function show($id)
     {
-        //
+        $director = Director::find($id);
+        return view('admin.directores.show',compact('director'));
     }
 
     /**
@@ -56,7 +64,8 @@ class DirectorsController extends Controller
      */
     public function edit($id)
     {
-        //
+        $director = Director::find($id);
+        return view('admin.directores.edit',compact('director'));
     }
 
     /**
@@ -66,9 +75,12 @@ class DirectorsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(directorsRequests $request, $id)
     {
-        //
+        $director = Director::find($id);
+        $director->fill($request->all());
+        $director->save();
+        return back()->with('info','Director '.$request->firstname.' '.$request->lastname.' editado exitosamente');
     }
 
     /**
@@ -79,6 +91,8 @@ class DirectorsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $director = Director::find($id);
+        $director->delete();
+        return back()->with('info','Director '.$director->firstname.' '.$director->lastname.' eliminado con exito!');
     }
 }

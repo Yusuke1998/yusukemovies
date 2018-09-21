@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\actorsRequests;
 use App\Actor;
 class ActorsController extends Controller
 {
@@ -15,29 +16,35 @@ class ActorsController extends Controller
 
     public function create()
     {
-        return "Metodo create";
+        return view('admin.actores.create');
     }
 
-    public function store(Request $request)
+    public function store(actorsRequests $request)
     {
-
+        $actor = Actor::create($request->all());
+        $actor->save();
         return back()->with('info', 'El actor fue agregado con exito!');
     }
 
     public function show($id)
     {
-        dd($id);
+        $actor = Actor::find($id);
+        return view('admin.actores.show',compact('actor'));
     }
 
     public function edit($id)
-    {
-        dd($id);
+    {   
+        $actor = Actor::find($id);
+        return view('admin.actores.edit',compact('actor'));
     }
 
-    public function update(Request $request, $id)
+    public function update(actorsRequests $request, $id)
     {
         $actor = Actor::find($id);
-
+        $actor->firstname  = $request->firstname;
+        $actor->lastname  = $request->lastname;
+        $actor->biography  = $request->biography;
+        $actor->save();
         return back()->with('info','El actor '.$actor->firstname.' '.$actor->lastname.' actualizado con exito!');
     }
 

@@ -6,10 +6,10 @@
             <div class="box-header">
               <i class="fa fa-envelope"></i>
 
-              <h3 class="box-title">Añadir actor</h3>
+              <h3 class="box-title">Añadir director</h3>
             </div>
             <div class="box-body">
-              <form action="{{route('actor.store')}}" method="POST">
+              <form action="{{route('director.store')}}" method="POST">
 				{!!csrf_field()!!}
                 <div class="form-group">
                   <input type="text" class="form-control" name="firstname" placeholder="Nombre(s)">
@@ -18,7 +18,7 @@
                   <input type="text" class="form-control" name="lastname" placeholder="Apellido(s)">
                 </div>
                 <div>
-                  <textarea name="biography" class="textarea" placeholder="Biografia del actor" style="width: 100%; height: 125px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
+                  <textarea name="biography" class="textarea" placeholder="Biografia del director" style="width: 100%; height: 125px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
                 </div>
 	            <div class="box-footer clearfix">
 	              <input value="Enviar" type="submit" class="pull-right btn btn-default">

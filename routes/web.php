@@ -18,5 +18,16 @@ Route::get('/', function () {
 
 
 Route::group(['prefix' => 'admin'],function(){
+	Route::get('/index',['as' => 'admin.index',
+		function(){
+			return view('admin.index');
+		}
+	]);
 	Route::resource('actor','ActorsController');
+	Route::resource('usuario','UsersController');
+	Route::resource('director','DirectorsController');
+	Route::resource('pelicula','MoviesController');
+
+
+
 });

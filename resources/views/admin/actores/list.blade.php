@@ -1,9 +1,9 @@
 @extends('templates.layout.layout')
 @section('content')
 @include('templates.layout.info')
-		<h1 class="text-center">Todos los Actores</h1>
+		<h1 class="text-center">Actores</h1>
 		<a href="{{route('actor.create')}}" class="pull-right" title="Nuevo actor"><span class="glyphicon glyphicon-plus-sign"></span> Nuevo</a>
-		<table class="table table-hover">
+		<table id="tabla" class="table table-hover">
 			<thead>
 				<tr>
 					<th>Nombre(s)</th>
@@ -33,7 +33,4 @@
 				@endforeach
 			</tbody>
 		</table>
-		<div class="text-center">
-			{!! $actores->render() !!}
-		</div>
 @endsection

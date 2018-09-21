@@ -3,6 +3,17 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\moviesRequests;
+use App\Movie;
+use App\Category;
+use App\User;
+use App\Poster;
+use App\Director;
+use App\Actor;
+use App\Tag;
+use App\Commentary;
+use App\Qualification;
+use App\Year;
 
 class MoviesController extends Controller
 {
@@ -13,7 +24,8 @@ class MoviesController extends Controller
      */
     public function index()
     {
-        //
+        $peliculas = Movie::orderBy('title','ASC')->paginate(5);
+        return view('admin.peliculas.list')->with('peliculas',$peliculas);
     }
 
     /**
@@ -23,7 +35,20 @@ class MoviesController extends Controller
      */
     public function create()
     {
-        //
+        $categorias = Category::all();
+        $usuarios = User::all();
+        $tags = Tag::all();
+        $años = Year::all();
+        $actores = Actor::all();
+        $directores = Director::all();
+
+        return view('admin.peliculas.create')
+        ->with('categorias',$categorias)
+        ->with('usuarios',$usuarios)
+        ->with('tags',$tags)
+        ->with('años',$años)
+        ->with('actores',$actores)
+        ->with('directores',$directores);
     }
 
     /**
@@ -32,9 +57,9 @@ class MoviesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(moviesRequests $request)
     {
-        //
+        
     }
 
     /**
@@ -45,7 +70,8 @@ class MoviesController extends Controller
      */
     public function show($id)
     {
-        //
+        $pelicula = Movie::find($id);
+        return view('admin.peliculas.show',compact('pelicula'));
     }
 
     /**
@@ -56,7 +82,8 @@ class MoviesController extends Controller
      */
     public function edit($id)
     {
-        //
+        $pelicula = Movie::find($id);
+        return view('admin.peliculas.edit',compact('pelicula'));
     }
 
     /**
@@ -66,9 +93,11 @@ class MoviesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(moviesRequests $request, $id)
     {
-        //
+        $pelicula = Movie::find($id);
+
+        return back()->with('info','La pelicula '.$pelicula->title.' '.'fue editada con exito!');
     }
 
     /**
@@ -79,6 +108,8 @@ class MoviesController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $pelicula = Movie::find($id);
+        $pelicula->delete();
+        return back()->with('info','La pelicula '.$pelicula->title.' '.'fue eliminada con exito!');
     }
 }
