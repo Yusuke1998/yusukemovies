@@ -15,7 +15,7 @@
 
 body{
 	color: white;
-	background-image: url(../img/alone.jpg);
+	/*background-image: url(../img/alone.jpg);*/
 	background: #954575;
 }
 
@@ -27,11 +27,11 @@ i{
   font-size:16px;
 }
 .slider{
-	background-image: url('../img/tecn.jpg');
+	/*background-image: url('../img/tecn.jpg');*/
 }
 
 .list-all{
-	background-image: url('../img/alone.jpg');
+	/*background-image: url('../img/alone.jpg');*/
 }
 
 .text-black{

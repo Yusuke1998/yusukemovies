@@ -16,10 +16,10 @@
                   <input type="text" value="{{old('title')}}" class="form-control" name="title" placeholder="Titulo">
                 </div>
                 <div>
-                  <textarea name="sinopsis" class="textarea" placeholder="Sinopsis de la pelicula" style="width: 100%; height: 125px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
+                  <textarea name="sinopsis" class="textarea" placeholder="Sinopsis de la pelicula" style="width: 100%; height: 125px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;">{{old('sinopsis')}}</textarea>
                 </div>
                 <div>
-                  <textarea name="content"  class="textarea" placeholder="Descripcion amplia de la pelicula" style="width: 100%; height: 125px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
+                  <textarea name="content"  class="textarea" placeholder="Descripcion amplia de la pelicula" style="width: 100%; height: 125px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;">{{old('content')}}</textarea>
                 </div>
 
                   <!-- SELECT -->

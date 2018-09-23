@@ -24,7 +24,7 @@ class MoviesController extends Controller
      */
     public function index()
     {
-        $peliculas = Movie::orderBy('title','ASC')->paginate(5);
+        $peliculas = Movie::all();
         return view('admin.peliculas.list')->with('peliculas',$peliculas);
     }
 

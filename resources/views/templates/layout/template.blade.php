@@ -11,7 +11,10 @@
         <!-- CHOSEN -->
         <link href="{{asset('/plugins/chosen/chosen.css')}}" rel="stylesheet">
         <!-- CHOSEN -->
-
+         <!-- DATA-TABLES -->
+        <link href="{{asset('/plugins/datatables/dataTables.bootstrap.css')}}" rel="stylesheet">
+        <!-- DATA-TABLES -->
+        <link href="{{asset('/css/AdminLTE.css')}}" rel="stylesheet">
     </head>
     <body>
         <!-- Header -->
@@ -21,68 +24,43 @@
 			  <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
 				  <span class="icon-toggle"></span>
 			  </button>
-			  <a class="navbar-brand" href="#">2JMovies</a>
+			  <a class="navbar-brand" href="{{route('index')}}">2JMovies</a>
 			</div>
 			<!-- ------------------------ -->
 
 			  <ul class="nav navbar-nav navbar-left">
 				<li class="nav-style-li">
-					<a class="nav-style-a" href="#">Pedidos<span class=""></span></a>
+					<a class="nav-style-a" href="{{route('pedidos')}}">Pedidos<span class=""></span></a>
 				</li>
 				<li class="nav-style-li">
-					<a class="nav-style-a" href="#">Sugerencias<span class=""></span></a>
+					<a class="nav-style-a" href="{{route('sugerencias')}}">Sugerencias<span class=""></span></a>
 				</li>
 				<li class="nav-style-li">
-					<a class="nav-style-a" href="#">Contacto<span class=""></span></a>
+					<a class="nav-style-a" href="{{route('contacto')}}">Contacto<span class=""></span></a>
 				</li>
 				<li class="nav-style-li">
-					<a class="nav-style-a" href="#">Peliculas<span class=""></span></a>
+					<a class="nav-style-a" href="{{route('peliculas')}}">Peliculas<span class=""></span></a>
 				</li>
 				<li class="nav-style-li">
-					<a class="nav-style-a" href="#">Categorias<span class=""></span></a>
+					<a class="nav-style-a" href="{{route('categorias')}}">Categorias<span class=""></span></a>
 				</li>
 				<li class="nav-style-li">
-					<a class="nav-style-a" href="#">Tags<span class=""></span></a>
+					<a class="nav-style-a" href="{{route('actores')}}">Actores<span class=""></span></a>
 				</li>
 				<li class="nav-style-li">
-					<a class="nav-style-a" href="#">Actores<span class=""></span></a>
+					<a class="nav-style-a" href="{{route('directores')}}">Directores<span class=""></span></a>
 				</li>
-				<li class="nav-style-li">
-					<a class="nav-style-a" href="#">Directores<span class=""></span></a>
-				</li>
-
-				<!-- Solo el administrador puede ver la opcion de usuarios -->
-
-				<li class="nav-style-li">
-					<a class="nav-style-a" href="#">Usuarios<span class=""></span></a>
-				</li>
-				
-				<!-- Solo el administrador puede ver la opcion de usuarios -->
-
 			  </ul>
 
 			<!-- ------------------------ -->
-
-			<!-- Si no estas logueado aparecera esta lista con la opcion de iniciar o registrar -->
-			  <ul class="nav navbar-nav navbar-right">
-			  	<li class="nav-style-li">
-			  		<a class="nav-style-a" href="#">Iniciar Sesion<span class=""></span></a>
-			  	</li>
-			  	<li class="nav-style-li">
-			  		<a class="nav-style-a" href="#">Registrar<span class=""></span></a>
-			  	</li>
-			  </ul>
-			<!-- Si no estas logueado aparecera esta lista con la opcion de iniciar o registrar -->
-
-			<!-- ------------------------ -->
-
-			<!-- Si ya estas logueado te aparecera esta lista con tu nombre de usuario, la opcion de ir a tu perfil y la opcion de cerrar sesion -->
 
 			<div class="navbar-collapse collapse">
 			  <ul class="nav navbar-nav navbar-right">
 				<li class="dropdown">
 				  <a class="dropdown-toggle" role="button" data-toggle="dropdown" href="#"><i class="glyphicon glyphicon-user"></i> Admin <span class="caret"></span></a>
 				  <ul id="g-account-menu" class="dropdown-menu" role="menu">
+				  	<li><a href="#">Iniciar Sesion</a></li>
+					<li><a href="#">Registrar</a></li>
 					<li><a href="#">Mi Perfil</a></li>
 					<li><a href="#">Cerrar Sesion</a></li>
 				  </ul>
@@ -107,10 +85,12 @@
 		<!-- Footer -->
 		<footer class="text-center">Derechos Reservados <a href="#"><strong>JJPM</strong></a></footer>
         
+		<!-- Main -->
 		<script type="text/javascript" src="{{asset('/js/jquery.js')}}"></script>
         <script type="text/javascript" src="{{asset('/js/bootstrap.js')}}"></script>
         <!-- CHOSEN -->
         <script type="text/javascript" src="{{asset('/plugins/chosen/chosen.jquery.js')}}"></script>
+
         <script type="text/javascript">
         	 $(".select").chosen({
 			    no_results_text: "Oops, no hay coincidencias!",
@@ -124,8 +104,46 @@
 			    no_results_text: "Oops, no hay coincidencias!",
 			    width: "100%",
 			  });
+
+        	 $(".select_multiple2").chosen({
+        	 	multiple:true,
+        	 	placeholder_text_multiple:"Selecciona actores!",
+			    no_results_text: "Oops, no hay coincidencias!",
+			    width: "100%",
+			  });
         </script>
-        <!-- CHOSEN -->  
+        <!-- CHOSEN -->
+        <!-- DATA TABLES -->
+        <script type="text/javascript" src="{{asset('/plugins/datatables/jquery.dataTables.js')}}"></script>  
+
+        <script type="text/javascript" src="{{asset('/plugins/datatables/dataTables.bootstrap.js')}}"></script>  
+
+        <script>
+		  $(function () {
+		    $("#tabla").DataTable(
+		    	{
+			      "language":{
+			       "lengthMenu":"Mostrar _MENU_ registros por página.",
+			       "zeroRecords": "Lo sentimos. No se encontraron registros.",
+			             "sInfo": "Mostrando: _START_ de _END_ - Total registros: _TOTAL_ ",
+			             "infoEmpty": "No hay registros aún.",
+			             "infoFiltered": "(filtrados de un total de _MAX_ registros)",
+			             "search" : "Búsqueda",
+			             "LoadingRecords": "Cargando ...",
+			             "Processing": "Procesando...",
+			             "SearchPlaceholder": "Escribe...",
+			             "paginate": {
+			     "previous": "Anterior",
+			     "next": "Siguiente", 
+			        }
+			    }
+			}
+
+    	);
+	    
+	  });
+		</script>
+        <!-- DATA TABLES -->
 
 	</body>
 </html>

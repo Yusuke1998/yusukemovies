@@ -13,6 +13,7 @@
         <!-- DATA-TABLES -->
         <link href="{{asset('/plugins/datatables/dataTables.bootstrap.css')}}" rel="stylesheet">
         <!-- DATA-TABLES -->
+        <link href="{{asset('/css/AdminLTE.css')}}" rel="stylesheet">
         
     </head>
     <body>  
@@ -44,15 +45,16 @@
 			<div class="row">
 				<div class="col-md-3 pull-left">
 				  <!-- Left column -->
-				  <a href="#"><strong><i class="glyphicon glyphicon-start"></i> Opciones</strong></a>  
+				  <a href="#"><strong>Panel de Administración</strong></a>  
 				  
 				  <hr>
 				  
 				  <ul class="list-unstyled">
 					<li class="nav-header"> <a class="" href="#" data-toggle="collapse" data-target="#userMenu">
-					  <h5>Editar <i class="glyphicon glyphicon-chevron-down"></i></h5>
+					  <h5>Opciones <i class="glyphicon glyphicon-chevron-down"></i></h5>
 					  </a>
 						<ul style="height: auto;" class="list-unstyled in" id="userMenu">
+							<li class="active"> <a href="{{route('index')}}"><i class="glyphicon glyphicon-link"></i> Pagina principal</a></li>
 							<li class="active"> <a href="{{route('usuario.index')}}"><i class="glyphicon glyphicon-user"></i> Usuarios</a></li>
 							<li><a href="{{route('actor.index')}}"><i class="glyphicon glyphicon-star"></i> Actores</a></li>
 							<li><a href="{{route('director.index')}}"><i class="glyphicon glyphicon-facetime-video"></i> Directores</a></li>
@@ -126,8 +128,8 @@
     	);
 	    
 	  });
-		</script>
-        <!-- DATA TABLES -->
+	</script>
+    <!-- DATA TABLES -->
 
 	</body>
 </html>

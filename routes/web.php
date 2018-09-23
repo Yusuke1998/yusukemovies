@@ -11,17 +11,16 @@
 |
 */
 
-Route::get('/', function () {
-    return view('Inicio');
-});
-
-
+Route::get('/',[
+	'as'	=>	'index',
+	'uses'	=>	'GeneralController@indexPublic'
+]);
 
 Route::group(['prefix' => 'admin'],function(){
-	Route::get('/index',
+	Route::get('',
 		[
 			'as' 	=> 	'admin.index',
-			'uses'	=>	'GeneralController@index',
+			'uses'	=>	'GeneralController@indexAdmin',
 	]);
 	Route::resource('actor','ActorsController');
 	Route::resource('usuario','UsersController');
@@ -31,3 +30,61 @@ Route::group(['prefix' => 'admin'],function(){
 	Route::resource('tag','TagsController');
 	Route::resource('poster','PostersController');
 });
+
+Route::group([
+	'prefix'	=>	''],function(){
+		Route::get('Pedidos',[
+			'as'	=>	'pedidos',
+			'uses'	=>	'GeneralController@pedidos'
+		]);
+		Route::get('Sugerencias',[
+			'as'	=>	'sugerencias',
+			'uses'	=>	'GeneralController@sugerencias'
+		]);
+		Route::get('Contacto',[
+			'as'	=>	'contacto',
+			'uses'	=>	'GeneralController@contacto'
+		]);
+		Route::get('Peliculas',[
+			'as'	=>	'peliculas',
+			'uses'	=>	'GeneralController@peliculas'
+		]);
+		Route::get('Peliculas/{id}',[
+			'as'	=>	'peliculas.id',
+			'uses'	=>	'GeneralController@peliculasid'
+		]);
+
+		Route::get('Categorias/{id}',[
+			'as'	=>	'categoria.id',
+			'uses'	=>	'GeneralController@categoriasid'
+		]);
+
+		Route::get('Actores/{id}',[
+			'as'	=>	'actor.id',
+			'uses'	=>	'GeneralController@actorid'
+		]);
+
+		Route::get('Directores/{id}',[
+			'as'	=>	'director.id',
+			'uses'	=>	'GeneralController@directorid'
+		]);
+
+		Route::get('Categorias',[
+			'as'	=>	'categorias',
+			'uses'	=>	'GeneralController@categorias'
+		]);
+
+		Route::get('CategoriasSearch',[
+			'as'	=>	'categoriayaño',
+			'uses'	=>	'GeneralController@categoria_año'
+		]);
+
+		Route::get('Actores',[
+			'as'	=>	'actores',
+			'uses'	=>	'GeneralController@actores'
+		]);
+		Route::get('Directores',[
+			'as'	=>	'directores',
+			'uses'	=>	'GeneralController@directores'
+		]);
+	});

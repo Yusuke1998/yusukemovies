@@ -10,7 +10,7 @@ class ActorsController extends Controller
     
     public function index()
     {
-        $actores = Actor::orderBy('firstname','ASC')->paginate(5);
+        $actores = Actor::all();
         return view('admin.actores.list')->with('actores',$actores);
     }
 

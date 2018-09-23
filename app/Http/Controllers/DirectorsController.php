@@ -14,7 +14,7 @@ class DirectorsController extends Controller
      */
     public function index()
     {
-        $directores = Director::orderBy('firstname','ASC')->paginate();
+        $directores = Director::all();
         return view('admin.directores.list',compact('directores'));
     }
 

@@ -18,7 +18,7 @@ use App\Movie;
 class GeneralController extends Controller
 {
 
-    public function index()
+    public function indexAdmin()
     {
         $actores = Actor::all();
         $directores = Director::all();
@@ -44,33 +44,116 @@ class GeneralController extends Controller
         ->with('peliculas',$peliculas);
     }
 
-    public function create()
+        public function indexPublic()
     {
-        //
+        $actores = Actor::all();
+        $directores = Director::all();
+        $categorias = Category::all();
+        $comentarios = Commentary::all();
+        $calificaciones = Qualification::all();
+        $tags = Tag::all();
+        $años = Year::all();
+        $usuarios = User::all();
+        $posters = Poster::all();
+        $peliculas = Movie::all();
+        $peliculas4 = Movie::orderBy('year_id','DESC')->limit(4)->get();
+        $peliculas8 = Movie::orderBy('year_id','DESC')->limit(8)->get();
+
+
+        return view('index')
+        ->with('actores',$actores)
+        ->with('directores',$directores)
+        ->with('categorias',$categorias)
+        ->with('comentarios',$comentarios)
+        ->with('calificaciones',$calificaciones)
+        ->with('tags',$tags)
+        ->with('años',$años)
+        ->with('usuarios',$usuarios)
+        ->with('posters',$posters)
+        ->with('peliculas',$peliculas)
+        ->with('peliculas4',$peliculas4)
+        ->with('peliculas8',$peliculas8);
     }
 
-    public function store(Request $request)
-    {
-        //
+    // solo peliculas
+
+    public function peliculas(){
+        $peliculas = Movie::all();
+        
+        return view('peliculas')->with('peliculas',$peliculas);
     }
 
-    public function show($id)
-    {
-        //
+    public function peliculasid($id){
+        $pelicula = Movie::find($id);
+
+        return "Hola ".$pelicula->title;
     }
 
-    public function edit($id)
-    {
-        //
+    // solo peliculas
+
+    // solo categorias
+
+    public function categorias(){
+        $categorias = Category::orderBy('name')->get();
+
+        return view('categorias')->with('categorias',$categorias);
     }
 
-    public function update(Request $request, $id)
-    {
-        //
+    public function categoriasid($id){
+        $categoria = Category::find($id);
+
+        return "Hola ".$categoria->name;
     }
 
-    public function destroy($id)
-    {
-        //
+    public function categoria_año(Request $request){
+      
+        $pelicula = Movie::where('category_id','=',$request->categories)->where('year_id','=',$request->years)->get();
+        
+        return $pelicula;
+    }
+    // solo categorias
+
+    // solo actores
+
+    public function actorid($id){
+        $actor = Actor::find($id);
+
+        return "Hola ".$actor->firstname;
+    }
+    public function actores(){
+        $actores = Actor::all();
+
+        return view('actores')->with('actores',$actores);
+    }
+
+    // solo actores
+
+    // solo directors
+
+    public function directores(){
+        $directores = Director::all();
+
+        return view('directores')->with('directores',$directores);;        
+    }
+
+    public function directorid($id){
+        $director = Director::find($id);
+
+        return "Hola ".$director->firstname;        
+    }
+
+    // solo directors
+
+
+    public function sugerencias(){
+        return view('sugerencias');
+    }
+
+    public function contacto(){
+        return view('contacto');
+    }
+   
+    public function pedidos(){
+        return view('pedidos');        
     }
 }
