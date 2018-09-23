@@ -86,7 +86,8 @@ class GeneralController extends Controller
     public function peliculasid($id){
         $pelicula = Movie::find($id);
 
-        return "Hola ".$pelicula->title;
+        return view('pelicula')
+        ->with('pelicula',$pelicula);
     }
 
     // solo peliculas

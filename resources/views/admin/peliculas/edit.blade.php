@@ -17,13 +17,11 @@
                   <input type="text" value="{{$pelicula->title}}" class="form-control" name="title" placeholder="Titulo">
                 </div>
                 <div>
-                  <textarea name="sinopsis" value="{{$pelicula->sinopsis}}" class="textarea" placeholder="Sinopsis de la pelicula" style="width: 100%; height: 125px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;">
-                    {{$pelicula->sinopsis}}
+                  <textarea name="sinopsis" style="width: 100%; height: 125px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;">{{$pelicula->sinopsis}}
                   </textarea>
                 </div>
                 <div>
-                  <textarea name="content"  value="{{$pelicula->content}}" class="textarea" placeholder="Descripcion amplia de la pelicula" style="width: 100%; height: 125px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;">
-                    {{$pelicula->content}}
+                  <textarea name="content" style="width: 100%; height: 125px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;">{{$pelicula->content}}
                   </textarea>
                 </div>
 
@@ -80,19 +78,6 @@
                     </div>
                 </div>
                 <!-- SELECT -->
-                
-                <!-- FILE UPLOAD -->
-                <div class="row">
-                    <div class="col-md-6">
-                        <label for="poster">Poster IMG (Requerido)</label><br>
-                        <input id="poster" type="file" name="poster">
-                    </div>
-                    <div class="col-md-6">
-                        <label for="poster_url">Poster URL (Opcional)</label><br>
-                        <input value="Http://www.example.com" id="poster_url" type="url" name="poster_url">
-                    </div>
-                </div>
-                <!-- FILE UPLOAD -->
 
                 <div class="box-footer clearfix">
                   <input value="Enviar" type="submit" class="pull-right btn  btn-primary">

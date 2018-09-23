@@ -2,13 +2,12 @@
 @section('contentI')
 	<div class="content">
 		<div class="row">
-			<p class="text-center h3">Todas las peliculas disponibles</p>
+			<p class="text-center h3">Todas las peliculas disponibles</p><hr>
 			@foreach($peliculas as $pelicula)
-			<a style="color: white;" href="{{route('peliculas.id',$pelicula->id)}}" title="{{$pelicula->sinopsis}}">
+			<a style="color: white;" href="{{route('peliculas.id',$pelicula->id)}}" title="{{$pelicula->title.': '.$pelicula->sinopsis}}">
 				<div class="col-md-2 col-lg-2 col-xs-4">
-					<p class="h4 text-center">{{$pelicula->title}}</p>
 					@foreach($pelicula->posters as $poster)
-						<img src="/poster/{{$poster->name}}" class="img-responsive" alt="">
+						<img class="img-thumbnail" style="width: 200px; height: 200px;" src="/poster/{{$poster->name}}" data-holder-rendered="true" alt="{{$pelicula->title}}"><hr>
 					@endforeach
 				</div>
 			</a>

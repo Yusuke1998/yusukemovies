@@ -1,4 +1,4 @@
-@extends('templates.layout.templateII')
+@extends('templates.layout.template')
 @section('asideI')
 			<!-- aside -->
 				<div class="col-md-2 pull-left">

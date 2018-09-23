@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Requests\moviesRequests;
+use App\Http\Requests\moviesRequestss;
 use App\Movie;
 use App\Category;
 use App\User;
@@ -133,15 +134,8 @@ class MoviesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(moviesRequests $request, $id)
+    public function update(moviesRequestss $request, $id)
     {
-         // Guardando imagen del poster
-        if ($request->hasFile('poster')) {
-            $file = $request->file('poster');
-            $namePoster = time()."_poster_".$file->getClientOriginalName();
-            $file->move(public_path()."/poster/",$namePoster);
-        }
-
         $pelicula = Movie::find($id);
         $pelicula->title = $request->title;
         $pelicula->sinopsis = $request->sinopsis;
@@ -152,15 +146,8 @@ class MoviesController extends Controller
         $pelicula->director_id = $request->director_id;
         $pelicula->save();
 
-        $poster = new Poster;
-        $poster->name = $namePoster;
-        $poster->url = $request->poster_url;
-        $poster->movie()->associate($pelicula);
-        $poster->save();
-
         $pelicula->tags()->sync($request->tags);
         $pelicula->actors()->sync($request->actors);
-
 
         return back()->with('info','La pelicula '.$pelicula->title.' '.'fue editada con exito!');
     }
