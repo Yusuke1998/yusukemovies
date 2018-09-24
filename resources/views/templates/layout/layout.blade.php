@@ -28,13 +28,23 @@
 			</div>
 			<div class="navbar-collapse collapse">
 			  <ul class="nav navbar-nav navbar-right">
+				@auth
 				<li class="dropdown">
 				  <a class="dropdown-toggle" role="button" data-toggle="dropdown" href="#"><i class="glyphicon glyphicon-user"></i> Admin <span class="caret"></span></a>
 				  <ul id="g-account-menu" class="dropdown-menu" role="menu">
-					<li><a href="#">Mi Perfil</a></li>
-					<li><a href="#">Cerrar Sesion</a></li>
+					<li><a href="{{ route('logout') }}"
+                        onclick="event.preventDefault();
+                                 document.getElementById('logout-form').submit();">Cerrar Sesion</a>
+
+                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                            {{ csrf_field() }}
+                                        </form>
+                    </li>
 				  </ul>
 				</li>
+				@else
+				<li>Debes iniciar sesion!</li>
+				@endauth
 			  </ul>
 			</div>
 		  </div><!-- /container -->

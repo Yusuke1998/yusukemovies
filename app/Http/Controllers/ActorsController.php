@@ -7,6 +7,11 @@ use App\Http\Requests\actorsRequests;
 use App\Actor;
 class ActorsController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('admin');
+    }
+
     
     public function index()
     {

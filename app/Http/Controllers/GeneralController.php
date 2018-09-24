@@ -18,32 +18,6 @@ use App\Movie;
 class GeneralController extends Controller
 {
 
-    public function indexAdmin()
-    {
-        $actores = Actor::all();
-        $directores = Director::all();
-        $categorias = Category::all();
-        $comentarios = Commentary::all();
-        $calificaciones = Qualification::all();
-        $tags = Tag::all();
-        $años = Year::all();
-        $usuarios = User::all();
-        $posters = Poster::all();
-        $peliculas = Movie::all();
-
-        return view('admin.index')
-        ->with('actores',$actores)
-        ->with('directores',$directores)
-        ->with('categorias',$categorias)
-        ->with('comentarios',$comentarios)
-        ->with('calificaciones',$calificaciones)
-        ->with('tags',$tags)
-        ->with('años',$años)
-        ->with('usuarios',$usuarios)
-        ->with('posters',$posters)
-        ->with('peliculas',$peliculas);
-    }
-
         public function indexPublic()
     {
         $actores = Actor::all();
@@ -84,10 +58,12 @@ class GeneralController extends Controller
     }
 
     public function peliculasid($id){
+        $comentarios = Commentary::all();
         $pelicula = Movie::find($id);
 
         return view('pelicula')
-        ->with('pelicula',$pelicula);
+        ->with('pelicula',$pelicula)
+        ->with('comentarios',$comentarios);
     }
 
     // solo peliculas

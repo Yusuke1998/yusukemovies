@@ -1,7 +1,7 @@
-@extends('templates.layout.templateII')
+@extends('templates.layout.template')
 @section('asideI')
 			<!-- aside -->
-				<div class="col-md-2 pull-left">
+				<div class="col-md-2 hidden-sm hidden-xs pull-left">
 				  <p>Las 4 más nuevas</p>  
 				  @foreach($peliculas4 as $pelicula4)
 				    <a href="{{route('peliculas.id',$pelicula4->id)}}" title="{{$pelicula4->title}}">	
@@ -22,7 +22,7 @@
 				<!-- content -->
 				<div class="col-md-8">
 					<div class="row">
-						<div class="col-md-12 search">
+						<div class="col-md-12 col-lg-12 hidden-xs hidden-sm search">
 							<form action="" method="get" accept-charset="utf-8">
 								<div class="col-md-6 input-group pull-right">
 				                	<input type="text" name="search" placeholder="Titulo de pelicula" class="form-control">
@@ -32,33 +32,30 @@
 			            		</div>
 							</form>
 						</div>
-						<div class="col-md-12 slider">
+						<div class="col-md-12 col-lg-12 col-sm-6">
 							<p class="h4">Ultimos estrenos</p>
-							@foreach($peliculas8 as $pelicula)	<!-- -- -->
-							<div class="col-md-3">
+							@foreach($peliculas8 as $pelicula)
+							<div class="col-md-3 col-xs-6 col-sm-4">
 								<a href="{{route('peliculas.id',$pelicula->id)}}" title="{{$pelicula->title}}">	
-									<div class="panel poster">
-										<div class="panel-title text-white">
-											<p class="small">{{$pelicula->created_at->diffForHumans()}}</p>
+									<div class="panel">
+										<div class="panel-title  text-black">{{$pelicula->created_at->diffForHumans()}}
 										</div>
-										<div class="panel-body">
-						  					@foreach($pelicula->posters as $poster)
-						  					<img class="img-thumbnail" style="width: 200px; height: 200px;" src="/poster/{{$poster->name}}" data-holder-rendered="true">
-						  					@endforeach
-										</div>
+					  					@foreach($pelicula->posters as $poster)
+					  					<center><img class="img-thumbnail" style="width: 150px; height: 200px;" src="/poster/{{$poster->name}}" data-holder-rendered="true"></center>
+					  					@endforeach
 									</div>
 								</a>
 							</div>
 							@endforeach<!-- -- -->
 						</div>
-						<div class="col-md-12 ">
+						<div class="hidden-xs hidden-sm col-md-12 ol-lg-12 ">
 							<div class="row list-all">
 							<p class="h4">Disponibles</p>
 								@foreach($peliculas as $pelicula)
 								<div class="col-md-2">
 									<a href="{{route('peliculas.id',$pelicula->id)}}" title="{{$pelicula->title}}">
 										@foreach($pelicula->posters as $poster)
-						  				<img class="img-thumbnail" style="width: 100px; height: 100px;" src="/poster/{{$poster->name}}" data-holder-rendered="true">
+						  				<img class="img-thumbnail" style="width: 100px; height: 100px;" src="/poster/{{$poster->name}}" data-holder-rendered="true"><hr>
 						  				@endforeach
 									</a>
 								</div>
@@ -74,7 +71,7 @@
 @endsection
 @section('asideII')
 				<!-- aside -->
-				<div class="col-md-2 pull-right">
+				<div class="col-md-2 col-lg-2 col-xs-12 col-sm-12 pull-right ">
 				  <!-- Right column -->
 					<form action="{{route('categoriayaño')}}" method="get" accept-charset="utf-8">
 					  	<div class="panel">
@@ -114,39 +111,9 @@
 				<!-- aisde -->
 @endsection
 @section('contentII')
-				<div class="col-md-12">
+				<div class="col-md-12 col-lg-12">
 					<div class="row">
-						<div class="col-md-6">
-							<p class="h4 text-white">Top 10 mejores peliculas</p>
-							<div class="panel text-black">
-						  		<div class="panel-title">
-							  		<span class="pull-left">Titulo</span>
-							  		<span class="badge pull-right">1 pts</span>
-							  	</div>
-							  	<div class="panel-body">
-						  			<img src="{{asset('/img/wolf.jpg')}}" class="img-thumbnail" alt="">
-							  	</div>
-							  	<div class="panel-footer">
-							  		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
-							  	</div>
-					  		</div>
-						</div>
-					<!-- -------------- -->
-						<div class="col-md-6">
-							<p class="h4 text-white">Top 10 peores peliculas</p>
-							<div class="panel text-black">
-						  		<div class="panel-title">
-							  		<span class="pull-left">Titulo</span>
-							  		<span class="badge pull-right">1 pts</span>
-							  	</div>
-							  	<div class="panel-body">
-						  			<img src="{{asset('/img/wolf.jpg')}}" class="img-thumbnail" alt="">
-							  	</div>
-							  	<div class="panel-footer">
-							  		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
-							  	</div>
-					  		</div>
-						</div>
+
 					</div>
 				</div>
 @endsection

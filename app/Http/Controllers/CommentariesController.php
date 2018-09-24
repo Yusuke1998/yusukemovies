@@ -1,16 +1,15 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Commentary;
+use App\User;
+use App\Movie;
 
 use Illuminate\Http\Request;
 
 class CommentariesController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    
     public function index()
     {
         //
@@ -32,9 +31,17 @@ class CommentariesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, $iduser, $idmovie)
     {
-        //
+        $usuario = User::find($iduser);
+        $pelicula = Movie::find($idmovie);
+        $comentario = new Commentary;
+
+        $comentario->user_id = $iduser;
+        $comentario->movie_id = $idmovie;
+        $comentario->content = $request->content;
+        $comentario->save();
+        return back()->with('info','Has comentado!');
     }
 
     /**

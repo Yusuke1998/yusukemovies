@@ -1,11 +1,11 @@
 
+.carrusel{
+	color: red;
+	background: red;
+}
 
 .nav-style-a{
 	color:white;
-}
-
-.nav-style-li{
-	/*background:#787870;*/
 }
 
 .poster{
@@ -16,7 +16,7 @@
 body{
 	color: white;
 	/*background-image: url(../img/alone.jpg);*/
-	background: #954575;
+	background: #5a5a5a;
 }
 
 .search{
@@ -25,13 +25,6 @@ body{
 
 i{
   font-size:16px;
-}
-.slider{
-	/*background-image: url('../img/tecn.jpg');*/
-}
-
-.list-all{
-	/*background-image: url('../img/alone.jpg');*/
 }
 
 .text-black{
@@ -47,10 +40,6 @@ i{
 .navbar-static-top {
   margin-bottom:20px;
   background:darkgray;
-}
-
-.nav > li > a {
-
 }
 
 footer {

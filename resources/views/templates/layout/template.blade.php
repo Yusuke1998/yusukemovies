@@ -4,7 +4,9 @@
         <meta http-equiv="content-type" content="text/html; charset=UTF-8"> 
         <meta charset="utf-8">
         <title>YusukeMovies</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+	    <meta name="viewport" content="width=device-width, initial-scale=1">
+	    <meta http-equiv="content-type" content="text/html; charset=UTF-8"> 
         <link href="{{asset('/css/bootstrap.css')}}" rel="stylesheet">
         <!-- <link href="assets/css/admin.css" rel="stylesheet"> -->
         <link href="{{asset('/css/mystyle.css')}}" rel="stylesheet">
@@ -21,13 +23,14 @@
 		<div id="top-nav" class="navbar navbar-static-top">
 		  <div class="container">
 			<div class="navbar-header">
-			  <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-				  <span class="icon-toggle"></span>
-			  </button>
+			  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="glyphicon glyphicon-list"></span>
+              </button>
 			  <a class="navbar-brand" href="{{route('index')}}">2JMovies</a>
 			</div>
 			<!-- ------------------------ -->
-
+			<div id="navbar" class="navbar-collapse collapse">
 			  <ul class="nav navbar-nav navbar-left">
 				<li class="nav-style-li">
 					<a class="nav-style-a" href="{{route('pedidos')}}">Pedidos<span class=""></span></a>
@@ -50,22 +53,35 @@
 				<li class="nav-style-li">
 					<a class="nav-style-a" href="{{route('directores')}}">Directores<span class=""></span></a>
 				</li>
-			  </ul>
-
-			<!-- ------------------------ -->
-
-			<div class="navbar-collapse collapse">
-			  <ul class="nav navbar-nav navbar-right">
 				<li class="dropdown">
-				  <a class="dropdown-toggle" role="button" data-toggle="dropdown" href="#"><i class="glyphicon glyphicon-user"></i> Admin <span class="caret"></span></a>
+				  <a class="dropdown-toggle" role="button" data-toggle="dropdown" href="#">
+				  	<i class="glyphicon glyphicon-user"></i>
+				  	@if(Auth::user())
+				  		{{Auth::user()->name}}
+				  	@else
+				  		Usuario
+				  	@endif
+				  	<span class="caret">
+				  	</span></a>
 				  <ul id="g-account-menu" class="dropdown-menu" role="menu">
-				  	<li><a href="#">Iniciar Sesion</a></li>
-					<li><a href="#">Registrar</a></li>
-					<li><a href="#">Mi Perfil</a></li>
-					<li><a href="#">Cerrar Sesion</a></li>
+				@guest
+				  	<li><a href="{{route('login')}}">Iniciar Sesion</a></li>
+					<li><a href="{{route('register')}}">Registrar</a></li>
+				@else
+					<li><a href="{{route('admin.index')}}">{{ Auth::user()->name }}</a></li>
+					<li><a href="{{ route('logout') }}"
+                        onclick="event.preventDefault();
+                                 document.getElementById('logout-form').submit();">Cerrar Sesion</a>
+
+                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                            {{ csrf_field() }}
+                                        </form>
+                    </li>
 				  </ul>
+                @endguest
 				</li>
 			  </ul>
+			<!-- ------------------------ -->
 			</div>
 			<!-- Si ya estas logueado te aparecera esta lista con tu nombre de usuario, la opcion de ir a tu perfil y la opcion de cerrar sesion -->
 

@@ -20,7 +20,7 @@ Route::group(['prefix' => 'admin'],function(){
 	Route::get('',
 		[
 			'as' 	=> 	'admin.index',
-			'uses'	=>	'GeneralController@indexAdmin',
+			'uses'	=>	'AdminController@indexAdmin',
 	]);
 	Route::resource('actor','ActorsController');
 	Route::resource('usuario','UsersController');
@@ -32,7 +32,7 @@ Route::group(['prefix' => 'admin'],function(){
 });
 
 Route::group([
-	'prefix'	=>	''],function(){
+	'prefix'	=>	'ymovies'],function(){
 		Route::get('Pedidos',[
 			'as'	=>	'pedidos',
 			'uses'	=>	'GeneralController@pedidos'
@@ -87,4 +87,10 @@ Route::group([
 			'as'	=>	'directores',
 			'uses'	=>	'GeneralController@directores'
 		]);
+		Route::post('Pelicula/comentario/{iduser}/{idmovie}',[
+			'as'	=>	'comentario',
+			'uses'	=>	'CommentariesController@store'
+		]);
 	});
+
+Auth::routes();

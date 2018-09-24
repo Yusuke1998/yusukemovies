@@ -28,24 +28,45 @@
 				@endforeach
 				</p>
 			</div>
-			<div class="panel-body">
-				<span class="label label-info">Descripcion:</span><br><p class="h4">{{$pelicula->content}}</p>
-			</div>
 			<div class="panel-body text-center">
 				@foreach($pelicula->posters as $poster)
 					<img src="/poster/{{$poster->name}}" class="img-thumbnail" alt="poster">
 				@endforeach
 			</div>
+			<div class="panel-body">
+				<span class="label label-info">Descripcion:</span><br><p class="h4">{{$pelicula->content}}</p>
+			</div>
 			<div class="panel-footer">
 				<p class="h5"><a href="{{route('pelicula.index')}}" title="Lista de peliculas">Volver a la lista.</a></p>
 			</div>
 		</div>
+	@guest
+		<p class="h4">Debes <a href="{{route('login')}}">Iniciar sesion</a> para poder comentar</p>
+	@endguest
 	</div>
 	<div class="col-md-12">
-		<form action="" method="post">
+		@foreach($pelicula->commentaries as $comentario)
+		<div style="color:blue; font-size:15px; padding: 10px; background: white; width: 100%;">
+			<p class="label label-primary">{{$comentario->user->name}}</p>
+			<p class="h4">{{$comentario->content.' '}}</p>
+			<small>{{$comentario->created_at->diffForHumans()}}</small>
+		</div>
+		@endforeach
+	</div>
+
+	@if(Auth::user())
+	<div class="col-md-12">
+		<form action="{{route('comentario',['user'=>Auth::user()->id, 'movie'=>$pelicula->id])}}" method="post">
 			{!!csrf_field()!!}
-			<input type="text" name="">
+			<div class="panel">
+				<div class="form-group">
+					<textarea name="content" class="form-control" placeholder="Escribe tu comentario..."></textarea>
+
+					<input type="submit" class="form-control btn btn-info" value="Enviar" name="submit">
+				</div>
+			</div>
 		</form>
 	</div>
+	@endif
 </div>
 @endsection
