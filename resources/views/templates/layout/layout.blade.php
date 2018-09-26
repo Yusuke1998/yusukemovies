@@ -12,6 +12,8 @@
         <!-- CHOSEN -->
         <!-- DATA-TABLES -->
         <link href="{{asset('/plugins/datatables/dataTables.bootstrap.css')}}" rel="stylesheet">
+        <link href="{{asset('/plugins/trumbowyg/ui/trumbowyg.css')}}" rel="stylesheet">
+
         <!-- DATA-TABLES -->
         <link href="{{asset('/css/AdminLTE.css')}}" rel="stylesheet">
         
@@ -35,7 +37,6 @@
 					<li><a href="{{ route('logout') }}"
                         onclick="event.preventDefault();
                                  document.getElementById('logout-form').submit();">Cerrar Sesion</a>
-
                                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                             {{ csrf_field() }}
                                         </form>
@@ -53,9 +54,9 @@
 		<!-- Main -->
 		<div class="container">
 			<div class="row">
-				<div class="col-md-3 pull-left">
+				<div class=" hidden-xs hidden-sm col-md-3 pull-left">
 				  <!-- Left column -->
-				  <a href="#"><strong>Panel de Administración</strong></a>  
+				  <a href="{{route('admin.index')}}"><strong>Panel de Administración</strong></a>  
 				  
 				  <hr>
 				  
@@ -76,7 +77,7 @@
 					</li>
 				  </ul>
 				</div>
-				<div class="col-md-9">
+				<div class="col-md-9 col-sm-12 col-xs-12">
 					@yield('content')
 				</div>
 			</div>
@@ -112,7 +113,10 @@
         <!-- DATA TABLES -->
         <script type="text/javascript" src="{{asset('/plugins/datatables/jquery.dataTables.js')}}"></script>  
 
-        <script type="text/javascript" src="{{asset('/plugins/datatables/dataTables.bootstrap.js')}}"></script>  
+        <script type="text/javascript" src="{{asset('/plugins/datatables/dataTables.bootstrap.js')}}"></script> 
+
+        <script type="text/javascript" src="{{asset('/plugins/trumbowyg/trumbowyg.js')}}"></script>  
+
 
         <script>
 		  $(function () {
@@ -140,6 +144,10 @@
 	  });
 	</script>
     <!-- DATA TABLES -->
+    <script>
+    	$('#trumbowyg').trumbowyg();
+
+    </script>
 
 	</body>
 </html>

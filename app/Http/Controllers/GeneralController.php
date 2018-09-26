@@ -29,10 +29,10 @@ class GeneralController extends Controller
         $años = Year::all();
         $usuarios = User::all();
         $posters = Poster::all();
-        $peliculas = Movie::all();
-        $peliculas4 = Movie::orderBy('year_id','DESC')->limit(4)->get();
-        $peliculas8 = Movie::orderBy('year_id','DESC')->limit(8)->get();
+        $peliculas = Movie::limit(18)->get();
+        $peliculas4 = Movie::orderBy('created_at','DESC')->limit(4)->get();
 
+        $peliculas8 = Movie::orderBy('year_id','DESC')->limit(8)->get();
 
         return view('index')
         ->with('actores',$actores)
@@ -72,14 +72,14 @@ class GeneralController extends Controller
 
     public function categorias(){
         $categorias = Category::orderBy('name')->get();
-
         return view('categorias')->with('categorias',$categorias);
     }
 
     public function categoriasid($id){
         $categoria = Category::find($id);
+        $peliculas = $categoria->movies;
 
-        return "Hola ".$categoria->name;
+        return view('categoria_id',compact('peliculas','categoria'));
     }
 
     public function categoria_año(Request $request){
@@ -93,10 +93,12 @@ class GeneralController extends Controller
     // solo actores
 
     public function actorid($id){
-        $actor = Actor::find($id);
+    $actor = Actor::find($id);
+    $peliculas = $actor->movies;
 
-        return "Hola ".$actor->firstname;
+        return view('actor_id',compact('peliculas','actor'));
     }
+
     public function actores(){
         $actores = Actor::all();
 
@@ -115,8 +117,9 @@ class GeneralController extends Controller
 
     public function directorid($id){
         $director = Director::find($id);
+        $peliculas = $director->movies;
 
-        return "Hola ".$director->firstname;        
+        return view('director_id',compact('peliculas','director'));
     }
 
     // solo directors

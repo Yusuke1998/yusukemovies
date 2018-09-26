@@ -33,15 +33,6 @@
 			<div id="navbar" class="navbar-collapse collapse">
 			  <ul class="nav navbar-nav navbar-left">
 				<li class="nav-style-li">
-					<a class="nav-style-a" href="{{route('pedidos')}}">Pedidos<span class=""></span></a>
-				</li>
-				<li class="nav-style-li">
-					<a class="nav-style-a" href="{{route('sugerencias')}}">Sugerencias<span class=""></span></a>
-				</li>
-				<li class="nav-style-li">
-					<a class="nav-style-a" href="{{route('contacto')}}">Contacto<span class=""></span></a>
-				</li>
-				<li class="nav-style-li">
 					<a class="nav-style-a" href="{{route('peliculas')}}">Peliculas<span class=""></span></a>
 				</li>
 				<li class="nav-style-li">
@@ -52,6 +43,15 @@
 				</li>
 				<li class="nav-style-li">
 					<a class="nav-style-a" href="{{route('directores')}}">Directores<span class=""></span></a>
+				</li>
+				<li class="nav-style-li">
+					<a class="nav-style-a" href="{{route('pedidos')}}">Pedidos<span class=""></span></a>
+				</li>
+				<li class="nav-style-li">
+					<a class="nav-style-a" href="{{route('sugerencias')}}">Sugerencias<span class=""></span></a>
+				</li>
+				<li class="nav-style-li">
+					<a class="nav-style-a" href="{{route('contacto')}}">Contacto<span class=""></span></a>
 				</li>
 				<li class="dropdown">
 				  <a class="dropdown-toggle" role="button" data-toggle="dropdown" href="#">

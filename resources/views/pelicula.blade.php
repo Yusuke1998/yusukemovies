@@ -1,5 +1,6 @@
 @extends('templates.layout.template')
 @section('contentI')
+@include('templates.layout.info')
 <div class="row">
 	<div class="col-md-12">
 		<div class="panel" style="background: #535888; color: white; padding: 10px;">

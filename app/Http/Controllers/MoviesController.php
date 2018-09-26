@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use Illuminate\Http\Request;
 use App\Http\Requests\moviesRequests;
 use App\Http\Requests\moviesRequestss;
@@ -72,7 +71,8 @@ class MoviesController extends Controller
         $movie->title = $request->title;
         $movie->sinopsis = $request->sinopsis;
         $movie->content = $request->content;
-        $movie->user_id = $request->user_id;
+        // $movie->user_id = $request->user_id;
+        $movie->user_id = \Auth::user()->id;
         $movie->year_id = $request->year_id;
         $movie->category_id = $request->category_id;
         $movie->director_id = $request->director_id;
@@ -143,7 +143,7 @@ class MoviesController extends Controller
         $pelicula->content = $request->content;
         $pelicula->category_id = $request->category_id;
         $pelicula->year_id = $request->year_id;
-        $pelicula->user_id = $request->user_id;
+        $pelicula->user_id = \Auth::user()->id;
         $pelicula->director_id = $request->director_id;
         $pelicula->save();
 

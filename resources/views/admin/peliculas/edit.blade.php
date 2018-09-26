@@ -28,35 +28,30 @@
                   <!-- SELECT -->
                   <div class="row">
 
-                    <div class="col-md-3">
+                    <div class="col-md-4">
                       <select class="select" name="category_id">
+                        <option>-categoria-</option>
                           @foreach($categorias as $categoria)
-                              <option selected="pelicula->category->id" value="{{$categoria->id}}">{{$categoria->name}}
+                              <option value="{{$categoria->id}}">{{$categoria->name}}
                               </option>
                           @endforeach
                       </select>
                     </div>
 
-                    <div class="col-md-3">
+                    <div class="col-md-4">
                       <select class="select" name="year_id">
+                        <option>-año-</option>
                           @foreach($años as $año)
-                            <option selected="$pelicula->year->year" value="{{$año->id}}">{{$año->year}}</option>
+                            <option value="{{$año->id}}">{{$año->year}}</option>
                           @endforeach
                       </select>
                     </div>
 
-                    <div class="col-md-3">
-                      <select class="select" name="user_id">
-                          @foreach($usuarios as $usuario)
-                            <option selected="$pelicula->user->id" value="{{$usuario->id}}">{{$usuario->name}}</option>
-                          @endforeach
-                      </select>
-                    </div>
-
-                    <div class="col-md-3">
+                    <div class="col-md-4">
                       <select class="select" name="director_id">
+                        <option>-director-</option>
                           @foreach($directores as $director)
-                            <option selected="$pelicula->director->id" value="{{$director->id}}">{{$director->firstname." ".$director->lastname}}</option>
+                            <option value="{{$director->id}}">{{$director->firstname." ".$director->lastname}}</option>
                           @endforeach
                       </select>
                     </div>

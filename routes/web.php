@@ -74,7 +74,7 @@ Route::group([
 			'uses'	=>	'GeneralController@categorias'
 		]);
 
-		Route::get('CategoriasSearch',[
+		Route::get('CategoriasAño',[
 			'as'	=>	'categoriayaño',
 			'uses'	=>	'GeneralController@categoria_año'
 		]);

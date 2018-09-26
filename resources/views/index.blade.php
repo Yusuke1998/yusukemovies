@@ -2,7 +2,7 @@
 @section('asideI')
 			<!-- aside -->
 				<div class="col-md-2 hidden-sm hidden-xs pull-left">
-				  <p>Las 4 más nuevas</p>  
+				  <p>Recien subidas!</p>  
 				  @foreach($peliculas4 as $pelicula4)
 				    <a href="{{route('peliculas.id',$pelicula4->id)}}" title="{{$pelicula4->title}}">	
 					  <div class="panel text-black">
@@ -10,7 +10,7 @@
 					  		<span>{{$pelicula4->title}}</span>
 					  	</div>
 					  		@foreach($pelicula4->posters as $poster)
-								<img class="img-thumbnail" style="width: 200px; height: 200px;" src="/poster/{{$poster->name}}" data-holder-rendered="true">
+								<img class="img-thumbnail" style="width: 100px; height: 150px; padding: 2px;" src="/poster/{{$poster->name}}" data-holder-rendered="true">
 							@endforeach
 					  </div>
 					</a>
@@ -22,18 +22,8 @@
 				<!-- content -->
 				<div class="col-md-8">
 					<div class="row">
-						<div class="col-md-12 col-lg-12 hidden-xs hidden-sm search">
-							<form action="" method="get" accept-charset="utf-8">
-								<div class="col-md-6 input-group pull-right">
-				                	<input type="text" name="search" placeholder="Titulo de pelicula" class="form-control">
-				                	<div class="input-group-btn">
-				                  		<button type="submit" class="btn btn-info">Buscar</button>
-				                	</div>
-			            		</div>
-							</form>
-						</div>
 						<div class="col-md-12 col-lg-12 col-sm-6">
-							<p class="h4">Ultimos estrenos</p>
+							<p class="h4 text-center">Ultimos estrenos</p>
 							@foreach($peliculas8 as $pelicula)
 							<div class="col-md-3 col-xs-6 col-sm-4">
 								<a href="{{route('peliculas.id',$pelicula->id)}}" title="{{$pelicula->title}}">	

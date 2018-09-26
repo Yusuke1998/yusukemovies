@@ -3,12 +3,11 @@
 @include('templates.layout.info')
 
 	<div class="row">
-		<div class="col-md-6 col-xs-6">
+		<div class="col-md-6 col-sm-6 col-xs-12">
 			<div class="info-box bg-red">
-			  <span class="info-box-icon"><i class="fa fa-comments-o"></i></span>
+			  <span class="info-box-icon">{{count($peliculas)}}<i class="fa fa-comments-o"></i></span>
 			  <div class="info-box-content">
 			    <span class="info-box-text">Peliculas</span>
-			    <span class="info-box-number">{{count($peliculas)}}</span>
 			    <!-- The progress section is optional -->
 			    <div class="progress">
 			      <div class="progress-bar" style="width: 70%"></div>
@@ -19,12 +18,11 @@
 			  </div><!-- /.info-box-content -->
 			</div><!-- /.info-box -->
 		</div>
-		<div class="col-md-6 col-xs-6">
+		<div class="col-md-6 col-sm-6 col-xs-12">
 			<div class="info-box bg-yellow">
-			  <span class="info-box-icon"><i class="fa fa-comments-o"></i></span>
+			  <span class="info-box-icon">{{count($categorias)}}<i class="fa fa-comments-o"></i></span>
 			  <div class="info-box-content">
 			    <span class="info-box-text">Categorias</span>
-			    <span class="info-box-number">{{count($categorias)}}</span>
 			    <!-- The progress section is optional -->
 			    <div class="progress">
 			      <div class="progress-bar" style="width: 70%"></div>
@@ -35,12 +33,11 @@
 			  </div><!-- /.info-box-content -->
 			</div><!-- /.info-box -->
 		</div>
-		<div class="col-md-6 col-xs-6">
+		<div class="col-md-6 col-sm-6 col-xs-12">
 			<div class="info-box bg-blue">
-			  <span class="info-box-icon"><i class="fa fa-comments-o"></i></span>
+			  <span class="info-box-icon">{{count($actores)}}<i class="fa fa-comments-o"></i></span>
 			  <div class="info-box-content">
 			    <span class="info-box-text">Actores</span>
-			    <span class="info-box-number">{{count($actores)}}</span>
 			    <!-- The progress section is optional -->
 			    <div class="progress">
 			      <div class="progress-bar" style="width: 70%"></div>
@@ -51,12 +48,11 @@
 			  </div><!-- /.info-box-content -->
 			</div><!-- /.info-box -->
 		</div>
-		<div class="col-md-6 col-xs-6">
+		<div class="col-md-6 col-sm-6 col-xs-12">
 			<div class="info-box bg-green">
-			  <span class="info-box-icon"><i class="fa fa-comments-o"></i></span>
+			  <span class="info-box-icon">{{count($directores)}}<i class="fa fa-comments-o"></i></span>
 			  <div class="info-box-content">
 			    <span class="info-box-text">Directores</span>
-			    <span class="info-box-number">{{count($directores)}}</span>
 			    <!-- The progress section is optional -->
 			    <div class="progress">
 			      <div class="progress-bar" style="width: 70%"></div>

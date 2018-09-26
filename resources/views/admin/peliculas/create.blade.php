@@ -16,16 +16,16 @@
                   <input type="text" value="{{old('title')}}" class="form-control" name="title" placeholder="Titulo">
                 </div>
                 <div>
-                  <textarea name="sinopsis" class="textarea" placeholder="Sinopsis de la pelicula" style="width: 100%; height: 125px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;">{{old('sinopsis')}}</textarea>
+                  <textarea name="sinopsis" class="textarea" placeholder="Sinopsis de la pelicula" style="width: 100%; height: 80px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;">{{old('sinopsis')}}</textarea>
                 </div>
                 <div>
-                  <textarea name="content"  class="textarea" placeholder="Descripcion amplia de la pelicula" style="width: 100%; height: 125px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;">{{old('content')}}</textarea>
+                  <textarea name="content" id="trumbowyg" class="textarea" placeholder="Descripcion amplia de la pelicula" style="width: 100%; height: 125px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;">{{old('content')}}</textarea>
                 </div>
 
                   <!-- SELECT -->
                   <div class="row">
 
-                    <div class="col-md-3">
+                    <div class="col-md-4">
                       <select class="select" name="category_id">
                         <option value="">Categoria</option>
                           @foreach($categorias as $categoria)
@@ -34,7 +34,7 @@
                       </select>
                     </div>
 
-                    <div class="col-md-3">
+                    <div class="col-md-4">
                       <select class="select" name="year_id">
                         <option value="">Año</option>
                           @foreach($años as $año)
@@ -43,16 +43,7 @@
                       </select>
                     </div>
 
-                    <div class="col-md-3">
-                      <select class="select" name="user_id">
-                        <option value="">Usuario</option>
-                          @foreach($usuarios as $usuario)
-                            <option value="{{$usuario->id}}">{{$usuario->name}}</option>
-                          @endforeach
-                      </select>
-                    </div>
-
-                    <div class="col-md-3">
+                    <div class="col-md-4">
                       <select class="select" name="director_id">
                         <option value="">Director</option>
                           @foreach($directores as $director)

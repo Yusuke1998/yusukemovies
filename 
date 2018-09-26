@@ -1,0 +1,53 @@
+[33mcommit 4af43e1920a95feab5a5822f14def72d2101d2bf[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m)[m
+Author: Jhonny Perez <jhonnyjose1998@gmail.com>
+Date:   Mon Sep 24 15:04:15 2018 -0430
+
+    Le implemente los comentarios a las peliculas, es estatico, no tiene ajax ni nada parecido, pero cumple con su proposito, mas adelante lo mejorare, ahora voy a integrar la opcion de buscar por categoria
+
+[33mcommit 445d3ef4846f577f2fbb9a7234db54f80c323273[m
+Author: Jhonny Perez <jhonnyjose1998@gmail.com>
+Date:   Sun Sep 23 18:07:05 2018 -0430
+
+    Le añadi un carrusel
+
+[33mcommit 218accf5cc55a1826dbaa7eb51effb20e2e55f91[m
+Author: Jhonny Perez <jhonnyjose1998@gmail.com>
+Date:   Sun Sep 23 15:34:50 2018 -0430
+
+    Falta implementar el buscador de la pagina principal, pero por ahora me voy a enfocar en colocar la opcion de calicifar y comentar para cada pelicula
+
+[33mcommit 2d88a19f7808184c3f2c7164677f68f40d447f99[m
+Author: Jhonny Perez <jhonnyjose1998@gmail.com>
+Date:   Fri Sep 21 17:17:07 2018 -0430
+
+    Terminados los modulos de categorias, tags y posters, falta aun la vista del dashboard admin y la vista principal
+
+[33mcommit d27b6b1a9ec827b6a03110e0a158698e302f2740[m
+Author: Jhonny Perez <jhonnyjose1998@gmail.com>
+Date:   Fri Sep 21 15:41:59 2018 -0430
+
+    Terminado el modulo de peliculas
+
+[33mcommit 3732a75bf60eeece1e912c2f7c95068b7be56722[m
+Author: Jhonny Perez <jhonnyjose1998@gmail.com>
+Date:   Fri Sep 21 10:42:07 2018 -0430
+
+    Modulo de actor, usuario y director listos, tambien añadi dos plugins: datables y chosen, ahora estoy mostrando y creado peliculas, el modulo esta a medio camino
+
+[33mcommit f056e6dacbaa5c4e87c5feb9e5a7e6c0a7507b55[m
+Author: Jhonny Perez <jhonnyjose1998@gmail.com>
+Date:   Thu Sep 20 22:21:56 2018 -0430
+
+    Se agrego el listado de actores y la opcion de eliminar, tambien el manejo de errores
+
+[33mcommit 87d05da9b7b82438b32a0d5dba604b8252cbe889[m
+Author: Jhonny Perez <jhonnyjose1998@gmail.com>
+Date:   Thu Sep 20 20:13:41 2018 -0430
+
+    Añadi mi diseño para el home, ademas del bootstrap, luego seguire con el controlador para el crud
+
+[33mcommit 95cc82ff707f2c242948ce058e1f7e542c9c3997[m
+Author: Jhonny Perez <jhonnyjose1998@gmail.com>
+Date:   Thu Sep 20 19:47:09 2018 -0430
+
+    Cree la base de datos usando las migraciones, y cree el primer controlador, este sera el encargado del crud para el modulo de actores, ahora voy a implementar bootstrap para la vista y colocare un diseño previo que habia hecho para el home de la pagina
