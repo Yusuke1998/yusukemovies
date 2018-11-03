@@ -1,15 +1,7 @@
-@extends('templates.layout.layout')
-@section('content')
-@include('templates.layout.info')
 <div class="col-md-10">
-		<div class="box box-info">
-            <div class="box-header">
-              <i class="fa fa-envelope"></i>
-
-              <h3 class="box-title">Añadir categoria</h3>
-            </div>
+		<div class="box box-info"
             <div class="box-body">
-              <form action="{{route('categoria.store')}}" method="POST">
+              <form action="{{route('obreros.create')}}" method="POST">
 				    {!!csrf_field()!!}
                 <div class="form-group">
                   <input type="text" class="form-control" name="name" placeholder="Nombre">
@@ -25,4 +17,3 @@
             </div>
         </div>
 </div>
-@endsection
